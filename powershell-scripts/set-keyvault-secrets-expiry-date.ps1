@@ -28,7 +28,7 @@ foreach ($KeyVault in $KeyVaults) {
         if ($secret.Expires) {
             $secretExpiration = Get-date $secret.Expires -Format yyyyMMdd
             # check if expiration date set on secret is before notify expiration date
-            if ($ExpirationDate -gt $secretExpiration) {
+            if ($ExpirationDate -gt $secretExpiration -and $secret.ContentType -ne "application/x-pkcs12") {
                 # check if secret did not expire yet but will expire soon
                 if ($CurrentDate -lt $secretExpiration) {
                     $NearExpirationSecrets += New-Object PSObject -Property @{
@@ -42,9 +42,9 @@ foreach ($KeyVault in $KeyVaults) {
                 else {
                     $ExpiredSecrets += New-Object PSObject -Property @{
                         Name           = $secret.Name;
-                        Category       = 'SecretExpired';
                         KeyVaultName   = $KeyVault.VaultName;
                         ExpirationDate = $secret.Expires;
+                        ContentType    = $secret.ContentType;
                     }
                 }
             }
