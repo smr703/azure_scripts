@@ -47,7 +47,6 @@ foreach ($KeyVault in $KeyVaults) {
                         ExpirationDate = $secret.Expires;
                     }
                 }
- 
             }
             else { 
                 $NoExpireDateSetSecrets += New-Object PSObject -Property @{
@@ -65,7 +64,7 @@ foreach ($KeyVault in $KeyVaults) {
 
 Write-Output "`nTotal number of expired secrets: $($ExpiredSecrets.Count)"
 $ExpiredSecrets
-  
+
 Write-Output "`nTotal number of secrets near expiration: $($NearExpirationSecrets.Count)"
 $NearExpirationSecrets
 
