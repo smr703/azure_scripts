@@ -47,7 +47,8 @@ foreach ($KeyVault in $KeyVaults) {
                         ExpirationDate = $secret.Expires;
                     }
                 }
-            } else {
+            }
+            else {
                 $NoExpireDateSetSecrets += New-Object PSObject -Property @{
                     Name         = $secret.Name;
                     Category     = 'SecretNoExpiryDate';
