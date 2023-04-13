@@ -47,25 +47,24 @@ foreach ($KeyVault in $KeyVaults) {
                         ExpirationDate = $secret.Expires;
                     }
                 }
- 
             }
-            else { 
-                $NoExpireDateSetSecrets += New-Object PSObject -Property @{
-                    Name         = $secret.Name;
-                    Category     = 'SecretNoExpiryDate';
-                    KeyVaultName = $KeyVault.VaultName;
-                }
-                # set to expiry date to 30 years from now :)
-                $Expires = (Get-Date).AddYears(30).ToUniversalTime()
-                Update-AzKeyVaultSecret -VaultName $KeyVault.VaultName -Name $secret.Name -Expires $Expires
+        }
+        else {
+            $NoExpireDateSetSecrets += New-Object PSObject -Property @{
+                Name         = $secret.Name;
+                Category     = 'SecretNoExpiryDate';
+                KeyVaultName = $KeyVault.VaultName;
             }
+            # set to expiry date to 30 years from now :)
+            $Expires = (Get-Date).AddYears(30).ToUniversalTime()
+            Update-AzKeyVaultSecret -VaultName $KeyVault.VaultName -Name $secret.Name -Expires $Expires
         }
     }
 }
 
 Write-Output "`nTotal number of expired secrets: $($ExpiredSecrets.Count)"
 $ExpiredSecrets
-  
+
 Write-Output "`nTotal number of secrets near expiration: $($NearExpirationSecrets.Count)"
 $NearExpirationSecrets
 
