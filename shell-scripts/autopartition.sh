@@ -2,7 +2,7 @@
 BLACKLIST="/dev/sda"
 
 usage() {
-    echo "Usage: $(basename $0) <new disk>"
+    echo "Usage: $(basename "$0") <new disk>"
 }
 
 scan_for_new_disks() {
@@ -13,7 +13,7 @@ scan_for_new_disks() {
     do
         # Check each device if there is a "1" partition.  If not,
         # "assume" it is not partitioned.
-        if [ ! -b ${DEV}1 ];
+        if [ ! -b "${DEV}1" ];
         then
             RET+="${DEV} "
         fi
@@ -24,8 +24,8 @@ scan_for_new_disks() {
 add_to_fstab() {
     UUID=${1}
     MOUNTPOINT=${2}
-    grep "${UUID}" /etc/fstab >/dev/null 2>&1
-    if [ ${?} -eq 0 ];
+
+    if grep "${UUID}" /etc/fstab >/dev/null 2>&1;
     then
         echo "Not adding ${UUID} to fstab again (it's already there!)"
     else
@@ -36,7 +36,7 @@ add_to_fstab() {
 }
 
 is_partitioned() {
-   blkid ${1} 2>&1
+   blkid "${1}" 2>&1
    return "${?}"
 }
 
