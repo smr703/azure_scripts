@@ -1,0 +1,23 @@
+- name: 'module.st_asuhfbaweuibfwino.azurerm_monitor_diagnostic_setting.this["blob"]'
+  id:
+- name: 'module.st_asuhfbaweuibfwino.azurerm_monitor_diagnostic_setting.this["file"]'
+  id:
+- name: 'module.st_asuhfbaweuibfwino.azurerm_monitor_diagnostic_setting.this["queue"]'
+  id:
+- name: 'module.st_asuhfbaweuibfwino.azurerm_monitor_diagnostic_setting.this["table"]'
+  id:
+- name: 'module.st_funcimmonitoring.azurerm_monitor_diagnostic_setting.this["blob"]'
+  id:
+- name: 'module.st_funcimmonitoring.azurerm_monitor_diagnostic_setting.this["file"]'
+  id:
+- name: 'module.st_funcimmonitoring.azurerm_monitor_diagnostic_setting.this["queue"]'
+  id:
+- name: 'module.st_funcimmonitoring.azurerm_monitor_diagnostic_setting.this["table"]'
+  id:
+- name: 'module.st_monitor_logs.azurerm_monitor_diagnostic_setting.this["blob"]'
+  id:
+- name: 'module.st_monitor_logs.azurerm_monitor_diagnostic_setting.this["file"]'
+  id:
+- name: 'module.st_monitor_logs.azurerm_monitor_diagnostic_setting.this["queue"]'
+  id:
+- name: 'module.st_monitor_logs.azurerm_monitor_diagnostic_setting.this["table"]'
